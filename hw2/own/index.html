@@ -2,6 +2,9 @@
 <html>
     <head>
         <title>Image Viewer</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link
             rel="stylesheet"
             type="text/css"
@@ -10,31 +13,66 @@
         />
     </head>
     <body>
+        <span id="myBtnContainer">
+            <button class="btn active" >Nature</button>
+            <button class="btn" id="flower" >Flower</button>
+            <button class="btn">Secret</button>
+        </span>
         <div class="image-viewer__container">
-            <p class="image-viewer__title">
+            
+            
+            <div class="image-viewer__title">
                 Image Viewer
-            </p>
+            </div>
+
+            
+            <!-- <div><h6><sup id='molecular'>2</sup>&frasl;<sub id='denominator'>7</sub></h6></div> -->
             <div class="image-viewer__main">
                 <div class="image-viewer__button">
                     <img src='./images/back.png' id="previous">
                 </div>
-                <div class="image-viewer__display">
-                    <img src="" id="display">
+
+                <div class="image-viewer__display" id='hi'>
+                    
+                    <img async src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" id="display">
+                    
                     <div class="image-viewer__display-source-wrapper">
                         <span>
+                            Source：
                             <a id="source"></a>
                         </span>
                     </div>
+                    
                 </div>
                 <div class="image-viewer__button">
                     <img src="./images/next.png" id="next">
                 </div>
             </div>
-            
+            <div class="slider-container">
+            <form>
+                <input id="slider" type="range" min="0" max="70" step="10" value="10" list="tickmarks">
+                <output id="num">1</output>
+            </form>
+            <datalist id="tickmarks">
+                <option value="0"></option>
+                <option value="10"></option>
+                <option value="20"></option>
+                <option value="30"></option>
+                <option value="40"></option>
+                <option value="50"></option>
+                <option value="60"></option>
+                <option value="70"></option>
+                </datalist>
+            </div>
         </div>
+        
         <!-- Please use the class names and IDs as defined in styles.css
          so that the outlook can be the same as the reference. -->
-        
+         
+
+         
     </body>
+    
+    <script src="rangeslider.min.js"></script>
     <script src="main.js"></script>
 </html>

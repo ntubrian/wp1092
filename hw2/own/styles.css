@@ -12,6 +12,8 @@ body {
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-evenly;
+	margin-bottom: 10px;
+	
 }
 
 .image-viewer__title {
@@ -19,15 +21,19 @@ body {
 	font-weight: 600;
 	color: #615dec;
 	margin: 0;
-	margin-top: 2rem;
+	margin-top: 1rem;
+	
 }
 
 .image-viewer__main {
+	height: 100%;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
 	margin: auto;
+	margin-top: -150px;
+	margin-bottom: -90px;
 }
 
 .image-viewer__button {
@@ -45,9 +51,10 @@ body {
 	cursor: pointer;
 }
 
-.image-viewer__button img:hover {
-	border: 1px solid black;
+.image-viewer__button img:hover, .image-viewer__button img.active {
+	border: 1.5px solid black;
 	border-radius: 50%;
+	box-shadow: #1C0702 0px 15px 40px;
 }
 
 .image-viewer__button:focus {
@@ -64,15 +71,20 @@ body {
 	flex-wrap: wrap;
 	align-items: center;
 	font-size: 0.6rem;
-	transform: scale(0.8);
+	transform: scale(0.7);
+	-webkit-animation: reveal 0.7s lineart;
+    -webkit-animation-fill-mode: forwards;
+	animation: reveal 0.7s linear;
+	animation-fill-mode: forwards;
+	
 }
 
 .image-viewer__display-source-wrapper {
 	position: absolute;
-	font-size: 12px;
+	font-size: 16px;
 	left: 50%;
 	margin-right: 50%;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, -10%);
 	min-width: 100em;
 	text-align: center;
 	bottom: 0;
@@ -82,12 +94,13 @@ body {
 	object-fit: contain;
 	width: 50rem;
 	height: 30rem;
-	margin-bottom: 1rem;
-	background: transparent url("./images/loading.gif") center no-repeat;
+	margin-bottom: 0.5rem;
+	background: url("./images/loading.gif") center no-repeat;
+
 	/*background-repeat: no-repeat;*/
 }
 
-#source {
+#source:link {
 	display: inline;
 	color: black;
 }
@@ -99,4 +112,75 @@ body {
 .disabled:hover {
 	border-color: transparent !important;
 	cursor: not-allowed;
+}
+
+@-webkit-keyframes reveal {
+    from   { opacity: 0%}
+    to { opacity: 100%}
+}
+@keyframes reveal {
+    from   { opacity: 0%}
+    to { opacity: 100%}
+}
+
+.nonetransition {
+	
+	-webkit-animation: none !important;
+    -webkit-animation-fill-mode: none !important;
+	animation: none !important;
+	animation-fill-mode: none !important;
+	
+}
+
+.btn {
+	border: 5px auto;
+	outline: none;
+	padding: 12px 16px;
+	background-color: white;
+	cursor: pointer;
+  }
+  
+  .btn:hover {
+	background-color: #ddd;
+  }
+  
+  .btn.active {
+	background-color: #666;
+	color: white;
+  }
+
+  .slider-container {
+	width: 100%;
+	display: flex;
+	
+	justify-content: center
+
+  }
+
+#slider{
+	cursor: pointer;
+	width: 40em;
+	margin-top: -100px;
+	/* height: 50px; */
+  }
+
+
+#myBtnContainer{
+	float:left;
+	display : inline;
+	position: absolute;
+	z-index: 999;
+}
+
+/* option{
+	width: 8px;
+} */
+
+#tickmarks{
+	display: inline-flex;
+	justify-content: space-between; 
+}
+
+form{
+	top: 0;
 }
