@@ -6,7 +6,7 @@ function TaskInput({newTask, handleChange, handleSubmit}) {
             <input
                 className="todo-app__input"
                 name="title"
-                placeholder="What needs to be dine?"
+                placeholder="What needs to be done?"
                 value={newTask.title || ""}
                 onChange={handleChange}
             />
