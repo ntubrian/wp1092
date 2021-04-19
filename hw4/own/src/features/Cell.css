@@ -1,0 +1,129 @@
+[contenteditable]:focus {
+    outline: 0px solid transparent;
+}
+  
+.cell {
+cursor: pointer;
+padding: 8px;
+border: 1px solid #eee;
+white-space: pre;
+box-sizing: border-box;
+position: relative;
+}
+
+.cell .cell-content {
+overflow: hidden;
+text-overflow: ellipsis;
+
+/*
+    Fixes error in Chome when there are no caret in empty editing div.
+    https://stackoverflow.com/a/25898165/6376451
+*/
+padding-left: 1px;
+}
+
+#table * {
+/*
+    Prevents browser text selecting messing with app's cells' rectangle selecion.
+    https://stackoverflow.com/a/16805743/6376451
+    https://stackoverflow.com/a/4358620/6376451 (inheritance)
+*/
+/*
+    NOTE: doesn't work with select-link-text addon.
+    https://addons.mozilla.org/en-US/firefox/addon/select-link-text/
+*/
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+
+.cell.editing .cell-content {
+white-space: pre-line;
+overflow: visible;
+
+/* Makes div width to be as big as text in order to fill background properly. */
+display: inline;
+background-color: white;
+
+/* See "* {" above. Couldn't do it with :not because it don't work with complex selectors. */
+-webkit-touch-callout: text;
+-webkit-user-select: text;
+-khtml-user-select: text;
+-moz-user-select: text;
+-ms-user-select: text;
+user-select: text;
+}
+
+
+
+.cell.editing {
+border: 1px solid #4e8;
+cursor: inherit;
+z-index: 750;
+background-color: white;
+}
+
+.cell.header {
+font-weight: 600;
+}
+
+.cell.selection {
+/*
+    Imitation of .current-selection blending with default cell.
+    Colors gotten via color picker tool in Gimp.
+*/
+background-color: #ededf0 !important;
+color: #08080b !important;
+border-color: #dedee1;
+}
+
+.cell.pointed.selection {
+border-color: #48e;
+}
+
+.cell.pointed {
+border: 1px solid #48e;
+background-color: white !important;
+}
+
+/* TODO: figure out how not to important everything. */
+.selection-top {
+border-top: 1px solid #48e !important; /* .cell.pointed */
+}
+
+.selection-right {
+border-right: 1px solid #48e !important;
+}
+
+.selection-bottom {
+border-bottom: 1px solid #48e !important;
+}
+
+.selection-left {
+border-left: 1px solid #48e !important;
+}
+
+
+
+.clipboard-top {
+border-top: 1px dashed #777 !important;
+}
+
+.clipboard-right {
+border-right: 1px dashed #777 !important;
+}
+
+.clipboard-bottom {
+border-bottom: 1px dashed #777 !important;
+}
+
+.clipboard-left {
+border-left: 1px dashed #777 !important;
+}
+
+.cell.pointed.clipboard {
+border-color: #48e !important;
+}

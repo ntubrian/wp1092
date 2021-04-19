@@ -1,0 +1,12 @@
+1.先做cell
+const initialState = Null
+const cellReducer = (state)
+
+
+
+----
+Slice裡面會有action creator、reducer、selector
+useSelector會到function component裡面再用來去取得store裡面的data
+
+useDispatch會搭配action creator去更動資料
+useSelector會搭配action creator去取得當前資料

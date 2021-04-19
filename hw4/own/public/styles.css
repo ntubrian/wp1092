@@ -1,0 +1,126 @@
+* {
+    box-sizing: border-box;
+}
+
+.sheet__root {
+    background-color: rgb(235, 235, 235);
+    margin: 0 auto;
+    margin-top: 7em;
+    width: 60em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1em;
+    height: 420px;
+    position:relative;
+    box-shadow:-3px -3px 9px gray;
+}
+
+.workarea {
+    background-color: rgb(255, 255, 255);
+    width: 900px;
+    height: 350px;
+    overflow: scroll;
+    overflow-y:scroll;
+    position:absolute;
+    bottom:0;
+    right:0;
+    margin: 0;
+    display: grid;
+    white-space:nowrap;
+    grid-template-columns: repeat(7, 138px)
+}
+
+#ex::-webkit-scrollbar{
+    width:16px;
+    background-color:#ffffff;
+    } 
+
+#ex::-webkit-scrollbar-thumb{
+    background-color: rgb(218, 220, 224);
+    border-radius:10px;
+}
+
+#ex::-webkit-scrollbar-thumb:hover{
+    background-color:rgb(229, 231, 235);
+    border:1px solid #333333;
+}
+
+#ex::-webkit-scrollbar-thumb:active{
+    background-color:#A6393D;
+    border:1px solid #333333;
+} 
+
+#ex::-webkit-scrollbar-track{
+    border:1px rgb(255, 255, 255) solid;
+    border-radius:10px;
+}
+
+table, td, th {
+    border: 1px solid #eee;
+    border-collapse:collapse
+}
+
+div:read-write:focus {
+    outline: 3px solid red;
+    caret-color: transparent;
+    overflow: hidden;
+    
+}
+
+.cool{
+    caret-color: black;
+}
+
+/* div:read-write{
+    caret-color: black;
+} */
+
+/* .span__no__focus {
+    outline: 2px solid #2ac20c00;
+    caret-color: red;
+    overflow: hidden; 
+} */
+
+.celloutline {
+    outline:rgba(241, 243, 248, 0.61) solid;
+    outline-offset: -2.5px;
+}
+
+.column-control {
+    position: absolute;
+    left: 100px
+}
+
+.column-control > button {
+    background-color: white;
+    height: 40px;
+    width: 40px;
+   
+
+}
+
+.column-control > button:hover {
+    cursor: pointer;
+    
+}
+
+
+.row-control {
+    position: absolute;
+    top: 80px;
+    left: -1px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.row-control > button {
+    background-color: white;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    
+    
+}
