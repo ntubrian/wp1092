@@ -32,24 +32,9 @@ import Table from '../features/Table.js'
 //     }, [fn, prevDeps, deps]);
 // }
 
-const New = (props) => {
+function New(props) {
     
-    const [columnNum, setColumnNum] = useState(0)
-    const [rowNum, setRowNum] = useState(0)
     
-
-    const handleColumnAdd = () => {
-        setColumnNum((prev)=> prev + 1)
-    }
-    const handleColumnRemove = () => {
-        setColumnNum((prev)=> prev - 1)
-    }
-    const handleRowAdd = () => {
-        setRowNum((prev) => prev + 1)
-    }
-    const handleRowRemove = () => {
-        setRowNum((prev) => prev - 1)
-    }
 
     // const handleUnselectAll = () => {
     //     if (this.state.selected || this.state.editing) {
@@ -59,17 +44,23 @@ const New = (props) => {
     
     return (
         <>
-            <div className="column-control">
-                <button className="column-add" onClick={handleColumnAdd}>+</button>
-                <button className="column-remove" onClick={handleColumnRemove}>-</button>
+            
+            <div className="workarea" id="ex">
+                <Table 
+                    x={props.columnNum} 
+                    y={props.rowNum} 
+                    storeWhichSelected={props.storeWhichSelected} 
+                    whchIsSelected={props.whichIsSelected}
+                    now={props.now}
+                    handleChangedCell={props.handleChangedCell}
+                    data={props.data}
+                    setData={props.setData}
+                    updateCells={props.updateCells}
+                    emitUnselectAllEvent={props.emitUnselectAllEvent}
+                />
+                
             </div>
-            <div className="workarea" id="ex" on >
-                <Table x={columnNum} y={rowNum} storeWhichSelected={props.storeWhichSelected} whichIsSelected={props.whichIsSelected}/>
-            </div>
-            <div className="row-control">
-                <button className="row-add" onClick={handleRowAdd}>+</button>
-                <button className="row-remove" onClick={handleRowRemove}>-</button>
-            </div>
+            
         </>
         
     )

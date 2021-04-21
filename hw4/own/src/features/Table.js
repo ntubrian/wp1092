@@ -2,24 +2,30 @@ import React, {useState, useEffect ,forceUpdate} from 'react'
 import PropTypes from 'prop-types'
 import Row from './Row'
 
-const Table = (props) => {
-  const [data, setData] = useState({})
+function Table(props) {
+  // const [data, setData] = useState({})
   
 
-  const handleChangedCell = ({ x, y }, value) => {
-    const modifiedData = Object.assign({}, data)
-    if (!modifiedData[y]) modifiedData[y] = {}
-    modifiedData[y][x] = value
-    console.log(modifiedData)
-    setData(modifiedData)
-    console.log(data)
-  }
+  // const handleChangedCell = ({ x, y }, value) => {
+    
+  //   const modifiedData = Object.assign({}, data)
+  //   if (!modifiedData[y]) modifiedData[y] = {}
+  //   modifiedData[y][x] = value
+  //   console.log(y)
+  //   console.log(`modifiedData${JSON.stringify(modifiedData)}`)
+  //   setData(modifiedData)
+    
+  // }
 
 
-  const updateCells = () => {
-    forceUpdate()
-  }
+  // const updateCells = () => {
+  //   forceUpdate()
+  // }
 
+  // useEffect(()=>{
+  //   console.log(props.whichIsSelected)
+  // },[props.whichIsSelected, props.x, props.y])
+  const rows = []
   // useEffect(()=>{
   //   const rowData = {}
   //   rows.splice(
@@ -36,71 +42,73 @@ const Table = (props) => {
   //     /> 
   //   )
   // },[whichIsSelected])
+  // if (props.now.length !== 0){
+  //   for (let y = 0; y < props.now[1]; y+=1){
+  //     const rowData = data[y] || {}
+  //     rows.push(
+  //       <Row
+  //         handleChangedCell={handleChangedCell}
+  //         updateCells={updateCells}
+  //         key={y}
+  //         y={y}
+  //         x={props.x + 1}
+  //         rowData={rowData}
+  //         storeWhichSelected={props.storeWhichSelected}
+  //       />,
+  //     )
+  //   }
+  //   const rowData = {}
+  //   rows.push(
+  //     <Row
+  //         handleChangedCell={handleChangedCell}
+  //         updateCells={updateCells}
+  //         key={props.now[1]}
+  //         y={props.now[1]}
+  //         x={props.x + 1}
+  //         rowData={rowData}
+  //         storeWhichSelected={props.storeWhichSelected}
+  //       />,
+  //   )
+  //   for (let y = props.now[1]; y < props.y; y+=1){
+  //     const rowData = data[y] || {}
+  //     rows.push(
+  //       <Row
+  //         handleChangedCell={handleChangedCell}
+  //         updateCells={updateCells}
+  //         key={y}
+  //         y={y}
+  //         x={props.x + 1}
+  //         rowData={rowData}
+  //         storeWhichSelected={props.storeWhichSelected}
+  //       />,
+  //     )
+  //   }
+  // }
   
-  const rows = []
-  // if(!whichIsSelected){
-    for (let y = 0; y < props.y + 1; y += 1) {
-      const rowData = data[y] || {}
-      // if(props.whichIsSelected){
-      //   rows.splice(
-      //     (props.whichIsSelected.y-1),
-      //     0,
-      //     <Row
-      //     handleChangedCell={handleChangedCell}
-      //     updateCells={updateCells}
-      //     key={y}
-      //     y={y}
-      //     x={props.x + 1}
-      //     rowData={{}}
-      //     storeWhichSelected={props.storeWhichSelected}
-      //   />,
-      //   )
-      //   continue
-      // }
-      rows.push(
-        <Row
-          handleChangedCell={handleChangedCell}
-          updateCells={updateCells}
-          key={y}
-          y={y}
-          x={props.x + 1}
-          rowData={rowData}
-          storeWhichSelected={props.storeWhichSelected}
-        />,
-      )
-    }
-    
-  // }
   // else{
-  //   for (let y = 0; y < whichIsSelected.y + 1; y += 1) {
-  //     const rowData = data[y] || {}
-  //     rows.splice(whichIsSelected.y, 0,
-  //       (<Row
-  //         handleChangedCell={handleChangedCell}
-  //         updateCells={updateCells}
-  //         key={whichIsSelected.y}
-  //         y={whichIsSelected.y}
-  //         x={whichIsSelected.x + 1}
-  //         rowData={rowData}
-  //         storeWhichSelected={props.storeWhichSelected}
-  //       />)
-  //     )
-  //   }
-  //   for (let y = whichIsSelected.y + 1; y < props.y + 1; y += 1) {
-  //     const rowData = data[y] || {}
-  //     rows.splice(whichIsSelected.y, 0,
-  //       (<Row
-  //         handleChangedCell={handleChangedCell}
-  //         updateCells={updateCells}
-  //         key={whichIsSelected.y}
-  //         y={whichIsSelected.y}
-  //         x={whichIsSelected.x + 1}
-  //         rowData={rowData}
-  //         storeWhichSelected={props.storeWhichSelected}
-  //       />)
-  //     )
-  //   }
-  // }
+  // console.log('goodShit', props.data)
+  for (let y = 0; y < props.y + 1; y += 1) {
+    
+    const rowData = props.data[y] || {}
+    
+    // console.log(rowData)
+    // console.log(`render${y}${JSON.stringify(rowData)}`)
+    // console.log('outside', rowData)
+    rows.push(
+      <Row
+        handleChangedCell={props.handleChangedCell}
+        updateCells={props.updateCells}
+        key={y}
+        y={y}
+        x={props.x + 1}
+        rowData={rowData}
+        setData={props.setData}
+        storeWhichSelected={props.storeWhichSelected}
+        emitUnselectAllEvent={props.emitUnselectAllEvent}
+      />
+    )
+  }
+  
   return (
     <div>
       {rows}

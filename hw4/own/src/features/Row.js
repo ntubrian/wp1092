@@ -1,12 +1,13 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Cell from './Cell'
 
-const Row = (props) => {
+function Row(props) {
   const cells = []
   const y = props.y
-  
+
   for (let x = 0; x < props.x; x += 1) {
+    // console.log(`rowdata${props.rowData[x]}`)
     cells.push(
       <Cell
         key={`${x}-${y}`}
@@ -14,8 +15,10 @@ const Row = (props) => {
         x={x}
         onChangedValue={props.handleChangedCell}
         updateCells={props.updateCells}
-        value={props.rowData[x] || ''}
+        value={props.rowData[x]}
         storeWhichSelected={props.storeWhichSelected}
+        setData={props.setData}
+        emitUnselectAllEvent={props.emitUnselectAllEvent}
       />,
     )
   }
@@ -36,4 +39,4 @@ Row.propTypes = {
   }).isRequired,
 }
 
-export default Row
+export default Row;

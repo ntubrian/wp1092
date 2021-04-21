@@ -1,19 +1,240 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
 
 /**
  * Cell represents the atomic element of a table
  */
+// function Cell(props) {
+//   const [isEditing, setIsEditing] = useState(false)
+//   const [value, setValue] = useState(props.value)
+//   const [selected, setIsSelected] = useState(false)
+
+//   const [editingContent, setEditingContent] = useState('');
+//   const [isHovered, setIsHovered] = useState('');
+//   const [hoveredElement, setHoveredElement] = useState('');
+//   const [isSingleClick, setSingleClick] = useState(false);
+//   let timer = 0
+//   let delay = 200
+//   let prevent = false
+
+//   const handleUnselectAll = () => {
+//     if (selected || isEditing) {
+//       setIsSelected(false)
+//       setIsEditing(false)
+
+//     }
+//   }
+//   // useEffect(() => {
+//   //   window.addEventListener('mousedown', handleUnselectAll)
+
+//   //   return () => {
+//   //     window.removeEventListener('mousedown', handleUnselectAll)
+//   //   }
+//   // })
+
+  
+//   const onChange = (e) => {
+//     setValue(e.target.value)
+//   }
+
+//   const onKeyPressOnInput = (e) => {
+//     if (e.key === 'Enter') {
+//       hasNewValue(e.target.value)
+//     }
+//   }
+
+//   const onKeyPressOnSpan = () => {
+//     if (!isEditing) {
+//       setIsEditing(true)
+//     }
+//   }
+
+//   const onBlur = (e) => {
+//     hasNewValue(e.target.value)
+//   }
+
+//   const hasNewValue = (value) => {
+//     props.onChangedValue(
+//       {
+//         x: props.x,
+//         y: props.y,
+//       },
+//       value,
+//     )
+//     setIsEditing(false)
+//   }
+
+  
+
+//   const clicked = () => {
+//     timer = setTimeout(() => {
+//       if (!prevent) {
+//         props.emitUnselectAllEvent()
+//         setIsEditing(true)
+//       }
+//       prevent = false
+//     }, delay)
+//   }
+
+//   const doubleClicked = () => {
+//     clearTimeout(timer)
+//     prevent = true
+//     props.emitUnselectAllEvent()
+//     setIsEditing(true)
+//     setIsSelected(true)
+//   }
+
+   
+//   const doClickAction = (e) =>　{
+//       setIsHovered(true)
+//       setHoveredElement(e)
+//   }
+//   const doDoubleClickAction = (e) => {
+//       console.log(e.target.innerText)
+//       setEditingContent(e.target.innerText)
+//       setIsEditing(true)
+//   }
+//   const handleEdit = (e) => {
+//       setSingleClick(true)
+//       console.log(e)
+//       timer = setTimeout(function() {
+//       if (!prevent) {
+//           doClickAction(e);
+//       }
+//       prevent = false;
+//       }, delay);
+//   }
+//   const handleDoubleClick = (e) => {
+//       clearTimeout(timer);
+//       prevent = true;
+//       doDoubleClickAction(e);
+//   }
+
+//   const calcaulateCss = () => {
+//     const css = {
+//       width: '80px',
+//       padding: '4px',
+//       margin: '0',
+//       height: '25px',
+//       boxSizing: 'border-box',
+//       position: 'relative',
+//       display: 'inline-block',
+//       color: 'black',
+//       border: '1px solid #cacaca',
+//       textAlign: 'left',
+//       verticalAlign: 'top',
+//       fontSize: '14px',
+//       lineHeight: '15px',
+//       overflow: 'hidden', 
+//     }
+    
+//     if (props.x === 0 || props.y === 0){
+//       css.textAlign = 'center'
+//       css.backgroundColor = '#f0f0f0'
+//       css.fontWeight = 'bold'
+//     }
+//     return css
+//   }
+  
+//   const css = calcaulateCss()
+//   if (props.x === 0) {
+//     return (
+//       <span style={css}>
+//         {props.y}
+//       </span>
+//     )
+//   }
+
+//   if (props.y === 0) {
+//     const alpha = ' abcdefghijklmnopqrstuvwxyz'.split('')
+//     return (
+//       <span
+//         onKeyPress={onKeyPressOnSpan}
+//         style={css}
+//         role="presentation">
+//         {alpha[props.x]}
+//       </span>
+//     )
+//   }
+
+//   if (selected) {
+//     css.outlineColor = 'lightblue'
+//     css.outlineStyle = 'dotted'
+//   }
+
+//   // if (isEditing) {
+//   //   return (
+//   //     <input
+//   //       style={css}
+//   //       type="text"
+//   //       onBlur={onBlur}
+//   //       onKeyPress={onKeyPressOnInput}
+//   //       value={value}
+//   //       onChange={onChange}
+//   //       autoFocus
+//   //     />
+//   //   )
+//   // }
+//   if (isEditing) {
+//     // if (isSingleClick){
+//     //     setEditingContent('')
+//     // }
+//     return (
+//       <input
+//           defaultValue={editingContent}
+//           value={editingContent}
+//           onChange={onChange}
+//           autoFocus
+//           onBlur={()=>{setIsEditing(false);setSingleClick(false)}}
+//       />
+      
+//     )
+//   }
+
+//   if (isSingleClick) {
+        
+//     return (
+//       <input
+//         defaultValue={editingContent}
+//         value={editingContent}
+//         onKeyDown={(e)=>{setIsEditing(true)}}
+//         onDoubleClick={handleDoubleClick}
+//         autoFocus
+//         style={css}
+//         onBlur={()=>setSingleClick(false)}
+//       /> 
+//     )
+//   }
+
+//   return (
+//     <span
+//       onClick={handleEdit}
+//       onDoubleClick={handleDoubleClick}
+//       style={css}
+//       role="presentation"
+//     >
+//       {editingContent}
+//     </span>
+//   )
+  
+// }
+
+// export default Cell;
+
 export default class Cell extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       editing: false,
-      value: props.value,
+      value: this.props.value
+      
     }
+    console.log(this.state.value)
+    // console.log(`y:${props.y}-x:${props.x}-${props.value}`)
+    // console.log(this.props)
     this.display = this.determineDisplay(
-      { x: props.x, y: props.y },
-      props.value
+      { x: this.props.x, y: this.props.y },
+      this.props.value
     )
     this.timer = 0
     this.delay = 200
@@ -38,6 +259,7 @@ export default class Cell extends React.Component {
   componentWillUpdate() {
     this.display = this.determineDisplay(
       { x: this.props.x, y: this.props.y }, this.state.value)
+      
   }
 
   /**
@@ -49,6 +271,7 @@ export default class Cell extends React.Component {
       this.handleUnselectAll)
   }
 
+  
   /**
    * When a Cell value changes, re-determine the display value
    * by calling the formula calculation
@@ -57,6 +280,7 @@ export default class Cell extends React.Component {
     this.setState({ value: e.target.value })
     this.display = this.determineDisplay(
       { x: this.props.x, y: this.props.y }, e.target.value)
+    // console.log(`x:${this.props.x}-y:${this.props.y}, value-${e.target.value}`)
   }
 
   /**
@@ -65,6 +289,9 @@ export default class Cell extends React.Component {
   onKeyPressOnInput = (e) => {
     if (e.key === 'Enter') {
       this.hasNewValue(e.target.value)
+      console.log(this.display)
+      console.log(this.state.value)
+      
     }
   }
 
@@ -83,6 +310,8 @@ export default class Cell extends React.Component {
    */
   onBlur = (e) => {
     this.hasNewValue(e.target.value)
+    // console.log(this.state.value)
+    // console.log(this.display)
   }
 
   /**
@@ -109,6 +338,7 @@ export default class Cell extends React.Component {
       value,
     )
     this.setState({ editing: false })
+    this.props.storeWhichSelected({x:this.props.x, y:this.props.y})
   }
 
   /**
@@ -150,9 +380,11 @@ export default class Cell extends React.Component {
     // Cell state to `selected` & `editing`
     this.emitUnselectAllEvent()
     this.setState({ editing: true, selected: true })
+    this.props.storeWhichSelected({x:this.props.x, y:this.props.y})
   }
 
   determineDisplay = ({ x, y }, value) => {
+    
     return value
   }
 
@@ -214,7 +446,7 @@ export default class Cell extends React.Component {
 
     if (this.state.selected) {
       css.outlineColor = 'lightblue'
-      css.outlineStyle = 'dotted'
+      css.outlineStyle = 'dashed'
     }
 
     if (this.state.editing) {
@@ -247,5 +479,5 @@ Cell.propTypes = {
   onChangedValue: PropTypes.func.isRequired,
   x: PropTypes.number.isRequired,
   y: PropTypes.number.isRequired,
-  value: PropTypes.string.isRequired,
+  // value: PropTypes.string.isRequired,
 }
