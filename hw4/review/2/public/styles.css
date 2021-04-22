@@ -1,0 +1,125 @@
+* {
+  box-sizing: border-box;
+}
+.sheet__header {
+  margin-bottom: 1em;
+}
+
+.sheet__title {
+  font-size: 100px;
+  font-weight: 100;
+  text-align: center;
+  color: rgba(175, 47, 47, 0.15);
+  margin: 0;
+  padding: 0;
+}
+.container {
+  width: 100%;
+  margin: 0 auto;
+  font-size: 13px;
+}
+.table {
+  border-collapse: collapse;
+  background-color: white;
+  font-size: 10pt;
+  font-family: sans-serif;
+  border: 2px solid black;
+  min-height: 600px;
+  height: max-content;
+  min-width: 100%;
+  width: max-content;
+  display: block;
+  overflow-x: auto;
+}
+table tbody {
+  display: table;
+  width: 100%;
+}
+.td {
+  border: 1px solid #eee;
+  width: 30pt;
+  height: 16pt;
+  padding: 0;
+  text-align: center;
+}
+.td_gray {
+  border: 1px solid #eee;
+  width: 30pt;
+  height: 16pt;
+  padding: 0;
+  text-align: center;
+  background-color: gray;
+}
+.td_cfocus {
+  border: 1px solid #eee;
+  width: 30pt;
+  height: 16pt;
+  padding: 0;
+  text-align: center;
+  background-color: gainsboro;
+}
+.in {
+  border: 1px solid #eee;
+  width: 25pt;
+  height: 14pt;
+  padding: 0;
+  text-align: center;
+}
+.in_gray {
+  border: 1px solid #eee;
+  width: 25pt;
+  height: 14pt;
+  padding: 0;
+  text-align: center;
+  background-color: gray;
+}
+.in_cfocus {
+  border: 1px solid #eee;
+  width: 25pt;
+  height: 14pt;
+  padding: 0;
+  text-align: center;
+  background-color: gainsboro;
+}
+table td:focus {
+  background-color: white;
+  border: 2px solid blue;
+}
+
+.button {
+  border: none;
+  padding: 5px;
+  font-size: 2em;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 1cm;
+  height: 1cm;
+}
+.button:hover {
+  border: 1px solid blue;
+}
+#top {
+  background-color: white;
+  height: 60px;
+  text-align: center;
+  line-height: 80px;
+}
+#sidebar_left {
+  background-color: white;
+  width: 60px;
+  height: 2500px;
+  text-align: center;
+  float: left;
+  display: block;
+}
+#content {
+  margin-left: 60px;
+  width: 90%;
+  height: 80vh;
+  background-color: #f2fff2;
+  text-align: center;
+  overflow: auto;
+  overflow-x: scroll;
+  overflow-y: scroll;
+}

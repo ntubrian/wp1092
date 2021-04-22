@@ -1,0 +1,4 @@
+- 想要利用 doubleclick 來修改值的話 必須先點一下要修改的格子再 doubleclick
+- doubleclick 要將游標放置在點擊的地方實在做不到ＱＱ 我看 google sheet 也沒有這個功能。
+- 加減欄或是列的功能會以上一次 focus 的格子為中心去動作,且動作結束後要重新 focus 到 table 才能再次操作.
+- 目前只有做到 basic + 進階功能的 reference
