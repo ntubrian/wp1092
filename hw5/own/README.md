@@ -2,6 +2,7 @@
 - baseline
     - 有提供正確答案的 hint 以便同學測試
     - 改掉老師的 parseInt，以便輸入非數字型態時可以報錯(ex:Error: 12a is not a valid number (1 - 100))
+    - (ps)在 guess 模式可以按 enter 鍵送出即可
 
 - advanced
     - 不管是一開始沒開啟 server 或遊戲進行到一半關掉 server，畫面皆會顯示 'Oops! Server is down!'訊息

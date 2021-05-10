@@ -73,8 +73,13 @@ function App() {
     if (returnMsg === 'Equal') setHasWon(true)
   }
 
+  const onSubmit = (e) => {
+    e.preventDefault()
+    
+  }
+
   const gameMode = (
-    <>
+    <form onSubmit={onSubmit}>
       <p>Guess a number between 1 to 100</p>
       <input
         value={number}
@@ -83,11 +88,12 @@ function App() {
       <button
         onClick={handleGuess}
         disabled={!number}
+        type="submit"
       >
         guess!
       </button>
       <p>{status}</p>
-    </>
+    </form>
   )
 
   const game = (
