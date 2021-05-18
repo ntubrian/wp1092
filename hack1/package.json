@@ -4,7 +4,8 @@
   "description": "A simple YouTube-like frontend with HTML, CSS and JavaScript.",
   "main": "main.js",
   "scripts": {
-    "test": "npx cypress run --spec cypress/integration/*.spec.js"
+    "test": "npx cypress run --spec cypress/integration/*.spec.js",
+    "cypress": "cypress open"
   },
   "author": "",
   "license": "ISC",
