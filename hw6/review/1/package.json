@@ -1,0 +1,16 @@
+{
+  "name": "own",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "cd frontend && yarn start",
+    "server": "cd backend && yarn server"
+  },
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7",
+    "ws": "^7.4.5"
+  }
+}
