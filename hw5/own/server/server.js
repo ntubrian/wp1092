@@ -27,11 +27,11 @@ const port = process.env.PORT || 4000
 if (isProduction) {
   // set static folder
   const publicPath = path.join(__dirname, '..', 'build')
-
+  console.log(publicPath)
   app.use(express.static(publicPath))
 
   app.get('*', (_, res) => {
-    res.sendFile(path.join(publicPath, 'index.html'))
+    res.sendFile(path.join(publicPath, 'index.html')).then()
   })
 }
 

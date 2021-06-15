@@ -25,6 +25,7 @@ function connectMongo() {
   db.once('open', function () {
     console.log('mongo connected!');
   });
+  
 }
 connectMongo()
 
