@@ -5,7 +5,7 @@ type Query {
 }
 
 type Mutation {
-  insertPeople(data: [InsertPeopleInput]): [Person]
+  insertPeople(data: [InsertPeopleInput]): Boolean!
 }
 
 input InsertPeopleInput {
