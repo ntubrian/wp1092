@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
-
+require('dotenv-defaults').config();
 // i use mongodb://localhost:27017/cardmongo for MONGO_URL
 
 function connectMongo() {
-  mongoose.connect('mongodb+srv://asd7415953:Asd1010420@cluster0.3hpzj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+  mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });

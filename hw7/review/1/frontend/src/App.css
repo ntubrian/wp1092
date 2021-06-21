@@ -1,7 +1,3 @@
-* {
-  /* border: 1px solid black; */
-}
-
 .App {
   display: flex;
   flex-direction: column;
@@ -32,12 +28,4 @@
   margin: 20px;
   padding: 20px;
   overflow: auto;
-}
-.App-message-me {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.App-message-me .Message-tag {
-  margin: 0;
 }
