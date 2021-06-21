@@ -1,0 +1,16 @@
+{
+  "name": "own",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "server": "cd backend && yarn start",
+    "start": "cd frontend && yarn start"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "dotenv-defaults": "^2.0.2",
+    "mongoose": "^5.12.13"
+  }
+}

@@ -1,0 +1,37 @@
+type Query {
+  chatBoxMessages(name1: String, name2: String): [Message]
+}
+
+type Mutation {
+  createChatBox(name1: String!, name2: String!): ChatBox!
+  createMessage(senderName: String!, receiverName: String!, body: String!): Message
+  clear: Boolean
+}
+
+type Subscription {
+  chatBox(chatBoxKey: String!): SubPayload!
+}
+
+type SubPayload {
+  mutation: String!
+  data: [Message!]!
+}
+
+type User {
+  id: ID!
+  name: String!
+  ChatBoxes: [ChatBox!]
+}
+
+type ChatBox {
+  id: ID!
+  name: String!
+  messages: [Message!]
+  users: [User!]
+}
+
+type Message {
+  sender: User!
+  body: String!
+  chatBox: ChatBox
+}
